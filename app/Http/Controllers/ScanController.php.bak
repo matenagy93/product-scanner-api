@@ -248,7 +248,6 @@ class ScanController extends Controller
 					#If applicable: insert new row or update existing one
 					if($applicableQuantity > 0)
 					{
-						print_r($applicableQuantity);
 						#Check if this discount has applied before
 						$where = [
 							['scan_session_id', $this->scanSession->id],
@@ -282,8 +281,6 @@ class ScanController extends Controller
 					}
 				}
 			}
-			
-			dd($this->scanSession->discounts->toArray());
 		}
 		// discountcontroller: get all discounts by product id
 		// add acceptable discounts and check the database for existing ones

@@ -282,8 +282,6 @@ class ScanController extends Controller
 				}
 			}
 		}
-		// discountcontroller: get all discounts by product id
-		// add acceptable discounts and check the database for existing ones
 	}
 	
 	#Update scan session's sum fields
