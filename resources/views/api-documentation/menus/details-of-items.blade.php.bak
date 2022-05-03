@@ -1,0 +1,223 @@
+<?php
+$details = [
+	[
+		"name" => "Product",
+		"table" => [ 
+			"ean" => [
+				"name" => "EAN code",
+				"description" => "Unique identifier of the product.",
+				"example" => "123456789012",
+				"type" => "integer",
+				"unit" => "",
+			],
+			"name" => [
+				"name" => "Name",
+				"description" => "Full name of the product.",
+				"example" => "Product #1",
+				"type" => "string",
+				"unit" => "",
+			],
+			"unit_price_net" => [
+				"name" => "Unit price (net)",
+				"description" => "Unit price of the product (per piece or pack).",
+				"example" => 2.00,
+				"type" => "double",
+				"unit" => "USD",
+			],
+		],
+	],
+	[
+		"name" => "Scanning",
+		"table" => [ 
+			"token" => [
+				"name" => "Token",
+				"description" => "Unique identifier of the scanning.",
+				"example" => "5ece4797eaf5e",
+				"type" => "string",
+				"unit" => "",
+			],
+			"started_at" => [
+				"name" => "Date of start",
+				"description" => "The date and time of the starting.",
+				"example" => date("Y-m-d H:i:s"),
+				"type" => "string",
+				"unit" => "",
+			],
+			"ended_at" => [
+				"name" => "Date of end",
+				"description" => "The date and time of the ending.",
+				"example" => date("Y-m-d H:i:s"),
+				"type" => "string",
+				"unit" => "",
+			],
+			"is_ended" => [
+				"name" => "Is ended?",
+				"description" => "If the scanning has ended, the value is 1, if it is still in progress, the value is 0.",
+				"example" => 0,
+				"type" => "boolean",
+				"unit" => "",
+			],
+			"sum_products_net" => [
+				"name" => "Summarized price (net) of scanned products.",
+				"description" => "The summarized price of the scanned products in net.",
+				"example" => 17.4,
+				"type" => "double",
+				"unit" => "USD",
+			],
+			"sum_discounts_net" => [
+				"name" => "Summarized value (net) of the discounts. (Only filled after the ending)",
+				"description" => "The summarized value of the discounts (e.g. volume price).",
+				"example" => 2,
+				"type" => "double",
+				"unit" => "USD",
+			],
+			"total_net" => [
+				"name" => "Total value of the cart (net)",
+				"description" => "The total value of the cart in net (sum_products_net - sum_discounts_net).",
+				"example" => 15.4,
+				"type" => "double",
+				"unit" => "USD",
+			],
+			"sales_tax" => [
+				"name" => "Value of sales tax",
+				"description" => "The value of the sales tax applied at the time of the scanning.",
+				"example" => 0.11,
+				"type" => "double",
+				"unit" => "%",
+			],
+			"total_gross" => [
+				"name" => "Total value of the cart (gross)",
+				"description" => "The total value of the cart in gross (total_net * (1 + sales_tax)).",
+				"example" => 17.094,
+				"type" => "double",
+				"unit" => "USD",
+			],
+			"products" => [
+				"name" => "List of scanned products",
+				"description" => "Array with the list of scanned products.",
+				"example" => "Format of an item: <em style='font-style: italic;'>Scanned product</em>",
+				"type" => "double",
+				"unit" => "USD",
+			],
+			"discounts" => [
+				"name" => "List of applied discounts",
+				"description" => "Array with the list of applied discounts.",
+				"example" => "Format of an item: <em style='font-style: italic;'>Discount</em>",
+				"type" => "double",
+				"unit" => "USD",
+			],
+		],
+	],
+	[
+		"name" => "Scanned product",
+		"table" => [ 
+			"ean" => [
+				"name" => "EAN code",
+				"description" => "Unique identifier of the product.",
+				"example" => "123456789012",
+				"type" => "integer",
+				"unit" => "",
+			],
+			"name" => [
+				"name" => "Name",
+				"description" => "Full name of the product.",
+				"example" => "Product #1",
+				"type" => "string",
+				"unit" => "",
+			],
+			"unit_price_net" => [
+				"name" => "Unit price (net)",
+				"description" => "Unit price of the product (per piece or pack).",
+				"example" => 2.00,
+				"type" => "double",
+				"unit" => "USD",
+			],
+			"quantity" => [
+				"name" => "Quantity",
+				"description" => "Amount of this product in the cart.",
+				"example" => 3,
+				"type" => "integer",
+				"unit" => "",
+			],
+			"sum_net" => [
+				"name" => "Summarized price (net)",
+				"description" => "The summarized price of the scanned product in net (unit_price_net * quantity).",
+				"example" => 6.00,
+				"type" => "double",
+				"unit" => "USD",
+			],
+		],
+	],
+	[
+		"name" => "Discount (applied on scanning)",
+		"table" => [ 
+			"code" => [
+				"name" => "Code",
+				"description" => "Unique identifier of the discount.",
+				"example" => "PROD_A_5PCS_2USD",
+				"type" => "string",
+				"unit" => "",
+			],
+			"name" => [
+				"name" => "Name",
+				"description" => "Full name of the discount.",
+				"example" => "-2$ If you buy 5 pcs of Product A.",
+				"type" => "string",
+				"unit" => "",
+			],
+			"unit_value_net" => [
+				"name" => "Unit value (net)",
+				"description" => "Value of the discount (without sign).",
+				"example" => 2.00,
+				"type" => "double",
+				"unit" => "USD",
+			],
+			"quantity" => [
+				"name" => "Quantity",
+				"description" => "Amount of this discount in the cart.",
+				"example" => 3,
+				"type" => "integer",
+				"unit" => "",
+			],
+			"sum_net" => [
+				"name" => "Summarized value (net)",
+				"description" => "The summarized price of the discount (without sign).",
+				"example" => 6.00,
+				"type" => "double",
+				"unit" => "USD",
+			],
+		],
+	],
+];
+?>
+
+<div class="overflow-hidden content-section" id="content-{{ $menuKey }}">
+	<h2>{{ $menuName }}</h2>
+	@foreach($details AS $detailsItem)
+		<h4 style="text-transform: uppercase;">{{ $detailsItem["name"] }}</h4>
+		<table>
+			<thead>
+				<tr>
+					<th>Key</th>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Description</th>
+					<th>Unit</th>
+					<th>Example</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($detailsItem["table"] AS $dataKey => $data)
+					<tr>
+						<td>{{ $dataKey }}</td>
+						<td>{{ $data["name"] }}</td>
+						<td>{{ $data["type"] }}</td>
+						<td>{!! $data["description"] !!}</td>
+						<td>{{ $data["unit"] }}</td>
+						<td>{!! $data["example"] !!}</td>
+					</tr>
+				@endforeach
+			</tbody>
+		</table>
+	@endforeach
+</div>
