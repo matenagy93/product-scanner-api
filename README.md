@@ -1,7 +1,7 @@
 ## About Product Scanner API
 
 With this Laravel based API you are able to access the products in the database and calculate the price of a scanning session (cart).
-Currently, you are able to test the product on this link: [How to use] (https://scanner-api.nagynet.eu/)
+Currently, you are able to test the product on this link: [How to use](https://scanner-api.nagynet.eu/)
 
 ## Set up in 2 steps
 
